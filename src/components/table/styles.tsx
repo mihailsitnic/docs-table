@@ -83,7 +83,8 @@ export const Head = styled.div`
   border-bottom: 1px solid ${colors.grey3};
   width: 100%;
   padding: 0 28px;
-  line-height: 2.5;
+  height: 32px;
+  display: grid;
 
   @media ${device.mobileL} {
   }
@@ -147,13 +148,15 @@ export const Li = styled.li`
 
 export const Row = styled.div`
   display: flex;
-  cursor: pointer;
 
   @media ${device.mobileL} {
   }
 `;
 
 export const Col = styled.div`
+  display: flex;
+  align-items: center;
+
   @media ${device.mobileL} {
   }
 
@@ -212,6 +215,18 @@ export const Arrow = styled.div`
 
 export const Icon = styled.img`
   padding-right: 10px;
+  @media ${device.mobileL} {
+  }
+`;
+
+export const A = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  font-size: 14px;
+  line-height: 1.43;
+  max-width: 100%;
+  color: ${colors.black};
+
   @media ${device.mobileL} {
   }
 `;

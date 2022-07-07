@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import data from "./data";
-import { Body, List, Li, Row, Col, Cell, Arrow, Icon } from "../styles";
+import { Body, List, Li, Row, Col, Cell, Arrow, Icon, A } from "../styles";
 
 const BodyComponent: React.FC<{}> = (props: any) => {
     const [currentID, setCurrentID] = useState<number>(0);
@@ -9,9 +9,11 @@ const BodyComponent: React.FC<{}> = (props: any) => {
         const list = data.map((item) => (
             <>
                 <Li key={item.id} onClick={() => setCurrentID(item.id)}>
-                    <Row onClick={() => { }}>
+                    <Row>
                         <Col {...props} width="80%">
-                            <Cell><Arrow {...props} active={false} /> <Icon src={item.icon} /> {item.name}</Cell>
+                            <Cell>
+                                <A to="/"><Arrow {...props} active={false} /> <Icon src={item.icon} /> {item.name}</A>
+                            </Cell>
                         </Col>
                         <Col {...props} width="10%">
                             <Cell>{item.size} mb</Cell>
