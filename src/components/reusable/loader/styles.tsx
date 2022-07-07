@@ -20,8 +20,8 @@ export const Spinner = styled.span`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 3px solid ${colors.black};
-    border-color: ${colors.black} transparent ${colors.black} transparent;
+    border: 3px solid ${colors.blue};
+    border-color: ${colors.blue} transparent ${colors.blue} transparent;
     animation: ${rotate} 1.2s linear infinite;
   }
 `;
