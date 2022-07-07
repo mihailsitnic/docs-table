@@ -64,6 +64,7 @@ export const SearchInput = styled.input`
   }
 
   @media ${device.mobileL} {
+    width: 150px;
   }
 `;
 
@@ -90,7 +91,7 @@ export const Head = styled.div`
   }
 `;
 
-export const HeadKey = styled.span`
+export const HeadKey: any = styled.span`
   color: ${colors.black};
   font-size: 12px;
   font-weight: 500;
@@ -122,7 +123,6 @@ export const HeadKey = styled.span`
 `;
 
 export const Body = styled.div`
-
   @media ${device.mobileL} {
   }
 `;
@@ -146,18 +146,30 @@ export const Li = styled.li`
   }
 `;
 
-export const Row = styled.div`
+export const Row: any = styled.div`
   display: flex;
+  ${(p: any) => p.inner && "padding: 0 0 0 28px;"};
 
   @media ${device.mobileL} {
   }
 `;
 
-export const Col = styled.div`
+export const Col: any = styled.div`
   display: flex;
   align-items: center;
 
-  @media ${device.mobileL} {
+  @media ${device.laptop} {
+    ${(props: any) =>
+    props.width === "80%" &&
+    css`
+        width: 50%;
+      `}
+
+      ${(props: any) =>
+    props.width === "10%" &&
+    css`
+        width: 25%;
+      `}
   }
 
   ${(props: any) =>
@@ -177,12 +189,7 @@ export const Cell = styled.span`
   }
 `;
 
-export const Footer = styled.footer`
-  @media ${device.mobileL} {
-  }
-`;
-
-export const Arrow = styled.div`
+export const Arrow: any = styled.div`
   position: relative;
   display: flex;
   padding-left: 20px;
@@ -198,6 +205,7 @@ export const Arrow = styled.div`
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+    display: none;
   }
 
   ${(props: any) =>
@@ -205,7 +213,15 @@ export const Arrow = styled.div`
     css`
       &:before {
         transform: rotate(90deg);
-        top: 40%;
+        top: 30%;
+      }
+    `}
+
+  ${(props: any) =>
+    props.show &&
+    css`
+      &:before {
+        display: block;
       }
     `}
 
@@ -213,7 +229,7 @@ export const Arrow = styled.div`
   }
 `;
 
-export const Icon = styled.img`
+export const Icon: any = styled.img`
   padding-right: 10px;
   @media ${device.mobileL} {
   }

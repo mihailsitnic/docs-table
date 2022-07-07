@@ -1,49 +1,20 @@
-import React, { useState } from "react";
-import data from "./data";
-import { Body, List, Li, Row, Col, Cell, Arrow, Icon, A } from "../styles";
+import React from "react";
+import { ListRow } from './list-row'
+import { ListFolderRow } from './list-folder-row';
+import { Body, List } from "../styles";
 
-const BodyComponent: React.FC<{}> = (props: any) => {
-    const [currentID, setCurrentID] = useState<number>(0);
-
-    const renderBody = () => {
-        const list = data.map((item) => (
-            <>
-                <Li key={item.id} onClick={() => setCurrentID(item.id)}>
-                    <Row>
-                        <Col {...props} width="80%">
-                            <Cell>
-                                <A to="/"><Arrow {...props} active={false} /> <Icon src={item.icon} /> {item.name}</A>
-                            </Cell>
-                        </Col>
-                        <Col {...props} width="10%">
-                            <Cell>{item.size} mb</Cell>
-                        </Col>
-                        <Col {...props} width="10%">
-                            <Cell>{item.added}</Cell>
-                        </Col>
-                    </Row>
-                </Li>
-            </>
-        ));
-        return <List>{list}</List>;
-    };
-    return <Body>{renderBody()}</Body>;
+const BodyComponent: React.FC<any> = (props) => {
+    return (
+        <Body>
+            <List>
+                {props.data.map((item: any) => item.type === 'folder' ? (
+                    <ListFolderRow key={item.id} {...item} />
+                ) : (
+                    <ListRow key={item.id} {...item} />
+                ))}
+            </List>
+        </Body>
+    );
 };
 
 export default BodyComponent;
-
-
-
-{/* <Li key={x.id}>
-    <Row>
-        <Col {...props} width="80%">
-            <Cell>{x.name}</Cell>
-        </Col>
-        <Col {...props} width="10%">
-            <Cell>{x.size} mb</Cell>
-        </Col>
-        <Col {...props} width="10%">
-            <Cell>{x.added}</Cell>
-        </Col>
-    </Row>
-</Li> */}
