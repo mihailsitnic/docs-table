@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
+import { filterData, sortData } from 'components/reusable/utils';
 import Head from "./head";
 import Body from "./body";
-import data from "./data";
+import data from "../reusable/utils/data";
 import img from "img";
 import {
     Section,
@@ -13,7 +14,7 @@ import {
     SearchIcon,
 } from "./styles";
 
-const Table: React.FC<any> = (props) => {
+const Table: React.FC<any> = () => {
     const [search, setSearch] = React.useState("");
     const [sort, setSort] = React.useState({ type: "ask", key: "name" });
 
@@ -25,36 +26,9 @@ const Table: React.FC<any> = (props) => {
         }
     };
 
-    const filteredData = useMemo(() => {
-        return data.filter((item: any) => {
-            return (
-                item.name.toLowerCase().includes(search) ||
-                item.files?.some((file: any) => {
-                    return file.name.toLowerCase().includes(search);
-                })
-            );
-        });
-    }, [search]);
+    const filteredData = useMemo(() => filterData(data, search), [search]);
 
-    const resultData = useMemo(() => {
-        return filteredData.sort((a: any, b: any) => {
-            if (sort.key === "date") {
-                return sort.type === "ask"
-                    ? new Date(a.added).valueOf() - new Date(b.added).valueOf()
-                    : new Date(b.added).valueOf() - new Date(a.added).valueOf();
-            }
-
-            if (sort.key === "size") {
-                return sort.type === "ask" ? a.size - b.size : b.size - a.size;
-            }
-
-            if (sort.key === "name") {
-                return sort.type === "ask"
-                    ? a.name.localeCompare(b.name)
-                    : b.name.localeCompare(a.name);
-            }
-        });
-    }, [filteredData, sort]);
+    const resultData = useMemo(() => sortData(filteredData, sort), [filteredData, sort]);
 
     return (
         <Section>
