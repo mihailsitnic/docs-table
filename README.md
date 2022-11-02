@@ -1,46 +1,69 @@
-# Getting Started with Create React App
+# BrightHR Interview Task
+Firstly, thanks for applying to work with us at BrightHR.
+We ask all potential candidates to complete a small task before the interview. This will form the basis of the technical part of the interview; thus avoiding the dreaded live interview kata! 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We appreciate your time is precious so please don’t spend much more than an hour on it. Don’t worry; there are no right or wrong answers and you don’t have to ‘complete’ the task. Other than a strong hint we’d like to see some TDD we’ll let you decide on what you want to focus on or show off.
 
-## Available Scripts
+When you’ve finished please make it available on something like GitHub and email a link back to us.
 
-In the project directory, you can run:
+# The task
 
-### `yarn start`
+We have a section of our app where users can access documents that administrators have uploaded. Please make a web page which will do the following...
+- Display the files/folders
+- Allow a user to open a folder to see it’s contents
+- Sort by name/size/date
+- Filter by filename
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The following is an example JSON structure you may want to use, feel free to choose your own if you think of a more appropriate shape.
+```
+[
+    {     
+        "type": "pdf",     
+        "name": "Employee Handbook",     
+        "added": "2017-01-06"
+    },
+    {     
+        "type": "pdf",     
+        "name": "Public Holiday policy",     
+        "added": "2016-12-06"
+    },
+    {     
+        "type": "folder",     
+        "name": "Expenses",     
+        "files": 
+        [
+            {         
+                "type": "doc",         
+                "name": "Expenses claim form",
+                "added": "2017-05-02"
+            },
+            {         
+                "type": "doc",
+                "name": "Fuel allowances",
+                "added": "2017-05-03"
+            }
+        ]
+    },
+    {     
+        "type": "csv",
+        "name": "Cost centres",     
+        "added": "2016-08-12"
+    },
+    {     
+        "type": "folder",     
+        "name": "Misc",     
+        "files": 
+        [
+            {         
+                "type": "doc",         
+                "name": "Christmas party",         
+                "added": "2017-12-01"
+            },
+            {         
+                "type": "mov",         
+                "name": "Welcome to the company!",         
+                "added": "2015-04-24"
+            }
+        ]
+    }
+]
